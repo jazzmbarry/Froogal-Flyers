@@ -8,8 +8,8 @@
 
 ## Contributing Members
 * JavaScript - Matthew Barry, Calvin Donner
-* CSS - Gabriel Garcia, Matthew Barry
-* HTML - Logan Boyd, Calvin Donner, Gabriel Garcia
+* CSS - Gabriel Garcia, Matthew Barry, Logan Boyd
+* HTML - Logan Boyd, Calvin Donner, Gabriel Garcia, Brandon Franks
 ## Screenshot
 
 ## APIs used

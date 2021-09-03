@@ -28,7 +28,6 @@ var priceInfoAnytime = function(data){
             priceEl.setAttribute('class', '#')
             priceEl.textContent = 'Flight ' + (i+1) + '= $' + data.Quotes[i].MinPrice
             ff2El.appendChild(priceEl)
-
         }
         testButton.remove()
         return data

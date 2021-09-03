@@ -1,10 +1,7 @@
 var ff2El = document.querySelector('#FF2')
 
-var buttonEl = document.createElement('button')
-buttonEl.setAttribute('onclick', mySearch())
-ff2El.appendChild(buttonEl)
 
-var priceInfoAnytime = function(){
+var priceInfoAnytime = function(data){
 
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SLC-sky/JFK-sky/anytime?inboundpartialdate=anytime", {
@@ -19,16 +16,24 @@ var priceInfoAnytime = function(){
     })
     .then(function(data) {
         console.log(data)
+        for (i = 0; i < data.Quotes.length; i++){
+            console.log(data.Quotes[i].MinPrice)
+            var priceEl = document.createElement('div')
+            priceEl.setAttribute('id', 'price' + i)
+            priceEl.textContent = 'Flight ' + (i+1) + '= $' + data.Quotes[i].MinPrice
+            ff2El.appendChild(priceEl)
+        }
+        return data
     })
     .catch(err => {
         console.error(err);
     });
-    return data
 }
 
 var mySearch = function(){
-    var data = priceInfoAnytime()
-    for (i = 0; i > data.quotes.length; i++)
-    console.log(data.quotes[i].MinPrice)
+    var data = priceInfoAnytime(data)
+    // console.log(data)
+    // for (i = 0; i > data.Quotes.length; i++){
+    // console.log(data.Quotes[i].MinPrice)}
 }
 

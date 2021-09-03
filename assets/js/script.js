@@ -1,4 +1,6 @@
+var ff1El = document.querySelector('#FF1')
 var ff2El = document.querySelector('#FF2')
+var testButton = document.querySelector('#testButton')
 
 
 var priceInfoAnytime = function(data){
@@ -16,13 +18,18 @@ var priceInfoAnytime = function(data){
     })
     .then(function(data) {
         console.log(data)
+        testFlightEL = document.createElement('div')
+        testFlightEL.textContent = "This Test Flight is going from SLC to JFC"
+        ff1El.appendChild(testFlightEL)
         for (i = 0; i < data.Quotes.length; i++){
             console.log(data.Quotes[i].MinPrice)
             var priceEl = document.createElement('div')
             priceEl.setAttribute('id', 'price' + i)
+            priceEl.setAttribute('class', '#')
             priceEl.textContent = 'Flight ' + (i+1) + '= $' + data.Quotes[i].MinPrice
             ff2El.appendChild(priceEl)
         }
+        testButton.remove()
         return data
     })
     .catch(err => {
@@ -32,6 +39,10 @@ var priceInfoAnytime = function(data){
 
 var mySearch = function(){
     var data = priceInfoAnytime(data)
+    
+
+
+
     // console.log(data)
     // for (i = 0; i > data.Quotes.length; i++){
     // console.log(data.Quotes[i].MinPrice)}

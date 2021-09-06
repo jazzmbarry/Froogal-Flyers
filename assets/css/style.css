@@ -4,13 +4,10 @@ body {
     font-weight: 300;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
 
 header {
     background: #49ffc2;
+    justify-content: space-between;
 }
 
 header::after {
@@ -32,6 +29,7 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    align-self: center;
 }
 
 nav li {

@@ -1,7 +1,5 @@
 var ff1El = document.querySelector('#FF1')
 var ff2El = document.querySelector('#FF2')
-var ff3El = document.querySelector('#FF3')
-var carrierIDEl = document.querySelector('#carrierIDs')
 var testButton = document.querySelector('#testButton')
 
 
@@ -24,32 +22,12 @@ var priceInfoAnytime = function(data){
         testFlightEL.textContent = "This Test Flight is going from SLC to JFC"
         ff1El.appendChild(testFlightEL)
         for (i = 0; i < data.Quotes.length; i++){
-            
-            // Set up Price
             console.log(data.Quotes[i].MinPrice)
-            var priceEl = document.createElement('button')
+            var priceEl = document.createElement('div')
             priceEl.setAttribute('id', 'price' + i)
             priceEl.setAttribute('class', '#')
-            priceEl.setAttribute('onclick', 'eventSearch()')
-            var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
-            priceEl.textContent = 'Flight ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
+            priceEl.textContent = 'Flight ' + (i+1) + '= $' + data.Quotes[i].MinPrice
             ff2El.appendChild(priceEl)
-
-            if (i===0) {
-            // Show carrier ID's Table
-            for (j = 0; j < data.Carriers.length; j++){
-                console.log(data.Carriers[j])
-
-                // Set ID Variable
-                var IDEl = document.createElement('div')
-                IDEl.setAttribute('id', 'ID' + j)
-                IDEl.setAttribute('class', '#')
-
-                // carrierEl.setAttribute('button', onclick(eventSearch()))
-                IDEl.textContent = data.Carriers[j].CarrierId + '   =   ' + data.Carriers[j].Name
-                ff3El.appendChild(IDEl) 
-            } 
-            }
         }
         testButton.remove()
         return data
@@ -70,6 +48,18 @@ var mySearch = function(){
     // console.log(data.Quotes[i].MinPrice)}
 }
 
-var eventSearch = function(){
-    console.log('test')
-}
+var events = {
+    fetchEvents: function(city) {
+        fetch(
+            "https://api.seatgeek.com/2/events?client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
+        )
+
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    },
+    displayEvents: function(data) {
+        const { title } = data;
+        const { city } = data.venue;
+        console.log(title, city)
+    }
+};

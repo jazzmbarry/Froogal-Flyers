@@ -1,15 +1,12 @@
 var ff1El = document.querySelector('#FF1')
 var ff2El = document.querySelector('#FF2')
 var testButton = document.querySelector('#testButton')
-var toEl = document.querySelector('#to')
-var fromEl = document.querySelector('#from')
 
 
 var priceInfoAnytime = function(data){
-    var to = toEl.textContent
-    var from = fromEl.textContent
+
     // Get flight information
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + from + "-sky/" + to + "-sky/anytime?inboundpartialdate=anytime", {
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SLC-sky/JFK-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -42,9 +39,6 @@ var priceInfoAnytime = function(data){
 
 var mySearch = function(){
     var data = priceInfoAnytime(data)
-    
-
-
 
     // console.log(data)
     // for (i = 0; i > data.Quotes.length; i++){
@@ -54,15 +48,17 @@ var mySearch = function(){
 var events = {
     fetchEvents: function(city) {
         fetch(
-            "https://api.seatgeek.com/2/events?client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
+            "https://api.seatgeek.com/2/venues?city=austin&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
         )
 
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => 
+        console.log(data.venues[0].city));
+
     },
     displayEvents: function(data) {
-        const { title } = data;
-        const { city } = data.venue;
+        const { title } = data[0];
+        const { city } = data[0].venue;
         console.log(title, city)
     }
 };

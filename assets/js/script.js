@@ -66,7 +66,6 @@ var priceInfoAnytime = function(data){
             } 
             }
         }
-        testButton.remove()
         return data
     })
     .catch(err => {

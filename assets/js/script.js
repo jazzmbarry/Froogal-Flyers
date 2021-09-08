@@ -9,7 +9,8 @@ var city = []
 var priceInfoAnytime = function(data){
     var toEl = document.querySelector('#to').value
     var fromEl = document.querySelector('#from').value
-    
+    ff2El.innerHTML = ""
+    carrierIDEl.innerHTML = ""
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
@@ -27,10 +28,10 @@ var priceInfoAnytime = function(data){
             console.log('error')
         }
             
-        console.log(data)
+        // console.log(data)
         testFlightEL = document.createElement('div')
-        testFlightEL.textContent = "This Test Flight is going from " + fromEl + " to " + toEl
-        ff1El.appendChild(testFlightEL) 
+        testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
+        ff2El.appendChild(testFlightEL) 
         if (data.Quotes[0].OutboundLeg.DestinationId === data.Places[0].PlaceId) {
             city.push(data.Places[0].CityName)
         }
@@ -62,7 +63,7 @@ var priceInfoAnytime = function(data){
 
                 // carrierEl.setAttribute('button', onclick(eventSearch()))
                 IDEl.textContent = data.Carriers[j].CarrierId + '   =   ' + data.Carriers[j].Name
-                ff3El.appendChild(IDEl) 
+                carrierIDEl.appendChild(IDEl) 
             } 
             }
         }

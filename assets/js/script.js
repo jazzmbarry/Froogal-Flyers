@@ -1,12 +1,15 @@
 var ff1El = document.querySelector('#FF1')
 var ff2El = document.querySelector('#FF2')
 var testButton = document.querySelector('#testButton')
+var toEl = document.querySelector('#to')
+var fromEl = document.querySelector('#from')
 
 
 var priceInfoAnytime = function(data){
-
+    var to = toEl.textContent
+    var from = fromEl.textContent
     // Get flight information
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SLC-sky/JFK-sky/anytime?inboundpartialdate=anytime", {
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + from + "-sky/" + to + "-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",

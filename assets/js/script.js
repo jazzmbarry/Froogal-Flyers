@@ -3,7 +3,7 @@ var ff2El = document.querySelector('#FF2')
 var ff3El = document.querySelector('#FF3')
 var carrierIDEl = document.querySelector('#carrierIDs')
 var testButton = document.querySelector('#testButton')
-
+var city = []
 
 
 var priceInfoAnytime = function(data){
@@ -30,7 +30,14 @@ var priceInfoAnytime = function(data){
         console.log(data)
         testFlightEL = document.createElement('div')
         testFlightEL.textContent = "This Test Flight is going from " + fromEl + " to " + toEl
-        ff1El.appendChild(testFlightEL)        
+        ff1El.appendChild(testFlightEL) 
+        if (data.Quotes[0].OutboundLeg.DestinationId === data.Places[0].PlaceId) {
+            city.push(data.Places[0].CityName)
+        }
+        else {
+            city.push(data.Places[1].CityName)
+        }  
+        console.log(city)     
         for (i = 0; i < data.Quotes.length; i++){
 
             // Set up Price

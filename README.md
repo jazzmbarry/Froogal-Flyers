@@ -13,6 +13,7 @@
 ## Screenshot
 
 ## APIs used
+* SkyScanner - Used for flight pricing
 
 ## Website Link
 

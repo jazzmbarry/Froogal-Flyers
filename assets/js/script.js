@@ -4,9 +4,17 @@ var testButton = document.querySelector('#testButton')
 
 
 var priceInfoAnytime = function(data){
+<<<<<<< HEAD
 
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SLC-sky/JFK-sky/anytime?inboundpartialdate=anytime", {
+=======
+    var toEl = document.querySelector('#to').value
+    var fromEl = document.querySelector('#from').value
+    
+    // Get flight information
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
+>>>>>>> abbb9c335eb858a21a5496172ad24e79ac9b0322
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -17,9 +25,13 @@ var priceInfoAnytime = function(data){
         return response.json()
     })
     .then(function(data) {
+        if (data === data.errors) 
+        {
+            console.log('error')
+        }
         console.log(data)
         testFlightEL = document.createElement('div')
-        testFlightEL.textContent = "This Test Flight is going from SLC to JFC"
+        testFlightEL.textContent = "This Test Flight is going from " + fromEL + " to " + toEl
         ff1El.appendChild(testFlightEL)
         for (i = 0; i < data.Quotes.length; i++){
             console.log(data.Quotes[i].MinPrice)

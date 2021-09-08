@@ -3,18 +3,11 @@ var ff2El = document.querySelector('#FF2')
 var testButton = document.querySelector('#testButton')
 
 
+
 var priceInfoAnytime = function(data){
-<<<<<<< HEAD
 
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SLC-sky/JFK-sky/anytime?inboundpartialdate=anytime", {
-=======
-    var toEl = document.querySelector('#to').value
-    var fromEl = document.querySelector('#from').value
-    
-    // Get flight information
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
->>>>>>> abbb9c335eb858a21a5496172ad24e79ac9b0322
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -25,13 +18,9 @@ var priceInfoAnytime = function(data){
         return response.json()
     })
     .then(function(data) {
-        if (data === data.errors) 
-        {
-            console.log('error')
-        }
         console.log(data)
         testFlightEL = document.createElement('div')
-        testFlightEL.textContent = "This Test Flight is going from " + fromEL + " to " + toEl
+        testFlightEL.textContent = "This Test Flight is going from SLC to JFC"
         ff1El.appendChild(testFlightEL)
         for (i = 0; i < data.Quotes.length; i++){
             console.log(data.Quotes[i].MinPrice)
@@ -60,11 +49,13 @@ var mySearch = function(){
 var events = {
     fetchEvents: function(city) {
         fetch(
-            "https://api.seatgeek.com/2/venues?city=austin&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
+            "https://api.seatgeek.com/2/venues?city="
+            + 
+            + "&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
         )
 
         .then((response) => response.json())
-        .then((data) => 
+        .then((data) =>
         console.log(data.venues[0].city));
 
     },

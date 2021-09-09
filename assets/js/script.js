@@ -53,6 +53,7 @@ var priceInfoAnytime = function(){
             priceEl.textContent = 'Option ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
             date.push(departCut[0])
             ff2El.appendChild(priceEl)
+            fetchEvents(city, date[0]);
 
             if (i === 0) {
             // Show carrier ID's Table
@@ -79,25 +80,34 @@ var mySearch = function(){
     var data = priceInfoAnytime(data)
 }
 
-var events = {
-    fetchEvents: function(city) {
+
+    
+var fetchEvents = (city, date) => {
         fetch(
-            "https://api.seatgeek.com/2/venues?city="
-            + 
+            "https://api.seatgeek.com/2/events?venue.city="
+            + city
+            + "&datetime_utc.gt="
+            + date
             + "&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
         )
-        
-        .then((response) => response.json())
-        .then((data) =>
-        console.log(data.venues[0].city));
 
-    },
-    displayEvents: function(data) {
-        const { title } = data[0];
-        const { city } = data[0].venue;
-        console.log(title, city)
-    }
-};
+        .then((response) => response.json())
+        .then((data) => displayEvents(data));
+
+    };
+
+var displayEvents = (data) => {
+    const title = data.events[0].title;
+    const time = data.events[0].datetime_local;
+    const city = data.events[0].venue.city;
+    const name = data.events[0].venue.name;
+    var locale = new Date(time);
+    $(".eventTitle").text("Event: " + title);
+    $(".eventTime").text("Date: " + locale.toLocaleDateString('en-US'));
+    $(".cityName").text("Location: " + city);
+    $(".venueName").text("Venue: " + name);
+}
+
 
 
 

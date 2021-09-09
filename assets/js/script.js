@@ -7,7 +7,7 @@ var city = []
 var date = []
 
 
-var priceInfoAnytime = function(data){
+var priceInfoAnytime = function(){
     var toEl = document.querySelector('#to').value
     var fromEl = document.querySelector('#from').value
     ff2El.innerHTML = ""
@@ -50,7 +50,7 @@ var priceInfoAnytime = function(data){
             priceEl.setAttribute('class', 'priceBtns')
             priceEl.setAttribute('onclick', 'events(' + i + ')')
             var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
-            priceEl.textContent = 'Flight ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
+            priceEl.textContent = 'Option ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
             date.push(departCut[0])
             ff2El.appendChild(priceEl)
 

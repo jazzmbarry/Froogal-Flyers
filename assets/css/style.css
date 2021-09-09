@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
 body {
     margin: 0;
     font-family: 'Works Sans', sans-serif;
@@ -6,7 +13,7 @@ body {
 
 
 header {
-    background: #49ffc2;
+    background: #1df6fd;
     justify-content: space-between;
 }
 
@@ -19,6 +26,11 @@ header::after {
 h1 {
     float: left;
     padding: 10px 0;
+    
+}
+
+h2 {
+    text-align: center;
 }
 
 nav {
@@ -41,7 +53,7 @@ nav li {
 }
 
 nav a {
-    color: #444;
+    color: rgb(53, 52, 52);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -55,7 +67,7 @@ nav a::before {
     content: '';
     display: block;
     height: 5px;
-    background-color: #444;
+    background-color:rgb(53, 52, 52);
 
     position: absolute;
     top: 0;
@@ -66,4 +78,19 @@ nav a::before {
 
 nav a:hover::before {
     width: 100%;
+}
+
+footer {
+    padding: 30px;
+    clear: both;
+    text-align: center;
+    background: #1df6fd;
+}
+
+.booking-flights {
+    background-image: url(./planee.png);
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-position: center;
+    text-align: center;
 }

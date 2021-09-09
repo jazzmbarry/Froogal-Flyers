@@ -4,6 +4,7 @@ var ff3El = document.querySelector('#FF3')
 var carrierIDEl = document.querySelector('#carrierIDs')
 var testButton = document.querySelector('#testButton')
 var city = []
+var date = []
 
 
 var priceInfoAnytime = function(data){
@@ -28,7 +29,7 @@ var priceInfoAnytime = function(data){
             console.log('error')
         }
             
-        // console.log(data)
+        console.log(data)
         testFlightEL = document.createElement('div')
         testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
         ff2El.appendChild(testFlightEL) 
@@ -38,23 +39,24 @@ var priceInfoAnytime = function(data){
         else {
             city.push(data.Places[1].CityName)
         }  
-        console.log(city)     
+        // console.log(city)     
         for (i = 0; i < data.Quotes.length; i++){
 
             // Set up Price
-            console.log(data.Quotes[i].MinPrice)
+            // console.log(data.Quotes[i].MinPrice)
             var priceEl = document.createElement('button')
             priceEl.setAttribute('id', 'price' + i)
-            priceEl.setAttribute('class', '#')
-            priceEl.setAttribute('onclick', 'eventSearch()')
+            priceEl.setAttribute('class', 'priceBtns')
+            priceEl.setAttribute('onclick', 'test()')
             var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
             priceEl.textContent = 'Flight ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
+            date.push(departCut[0])
             ff2El.appendChild(priceEl)
 
-            if (i===0) {
+            if (i === 0) {
             // Show carrier ID's Table
             for (j = 0; j < data.Carriers.length; j++){
-                console.log(data.Carriers[j])
+                // console.log(data.Carriers[j])
 
                 // Set ID Variable
                 var IDEl = document.createElement('div')
@@ -67,7 +69,6 @@ var priceInfoAnytime = function(data){
             } 
             }
         }
-        return data
     })
     .catch(err => {
         console.error(err);
@@ -97,4 +98,9 @@ var events = {
         const { city } = data[0].venue;
         console.log(title, city)
     }
-}; 
+};
+
+var test = function(){
+    console.log(this.textContent)
+}
+// priceBtnsEl.addEventListener("click", test)

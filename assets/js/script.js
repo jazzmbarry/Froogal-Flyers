@@ -12,6 +12,7 @@ var priceInfoAnytime = function(data){
     var fromEl = document.querySelector('#from').value
     ff2El.innerHTML = ""
     carrierIDEl.innerHTML = ""
+    
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
@@ -29,25 +30,25 @@ var priceInfoAnytime = function(data){
             console.log('error')
         }
             
-        console.log(data)
         testFlightEL = document.createElement('div')
         testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
         ff2El.appendChild(testFlightEL) 
+        city = []
         if (data.Quotes[0].OutboundLeg.DestinationId === data.Places[0].PlaceId) {
             city.push(data.Places[0].CityName)
         }
         else {
             city.push(data.Places[1].CityName)
-        }  
-        // console.log(city)     
+        } 
+        
+        date = []
         for (i = 0; i < data.Quotes.length; i++){
 
             // Set up Price
-            // console.log(data.Quotes[i].MinPrice)
             var priceEl = document.createElement('button')
             priceEl.setAttribute('id', 'price' + i)
             priceEl.setAttribute('class', 'priceBtns')
-            priceEl.setAttribute('onclick', 'test()')
+            priceEl.setAttribute('onclick', 'events(' + i + ')')
             var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
             priceEl.textContent = 'Flight ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
             date.push(departCut[0])
@@ -76,10 +77,8 @@ var priceInfoAnytime = function(data){
 }
 var mySearch = function(){
     var data = priceInfoAnytime(data)
-    // console.log(data)
-    // for (i = 0; i > data.Quotes.length; i++){
-    // console.log(data.Quotes[i].MinPrice)}
 }
+
 var events = {
     fetchEvents: function(city) {
         fetch(
@@ -87,7 +86,7 @@ var events = {
             + 
             + "&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
         )
-
+        
         .then((response) => response.json())
         .then((data) =>
         console.log(data.venues[0].city));
@@ -100,7 +99,7 @@ var events = {
     }
 };
 
-var test = function(){
-    console.log(this.textContent)
-}
-// priceBtnsEl.addEventListener("click", test)
+
+
+
+

@@ -13,7 +13,9 @@
 ## Screenshot
 
 ## APIs used
+* SkyScanner - Used for flight pricing
 
 ## Website Link
 
 ## CSS Frame
+* Milligram - A minimalist CSS framework

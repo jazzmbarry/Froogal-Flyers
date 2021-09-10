@@ -42,16 +42,16 @@ var priceInfoAnytime = function(){
         } 
         
         date = []
-        for (i = 0; i < data.Quotes.length; i++){
+        for (i = 0; i < 5; i++){
 
             // Set up Price
             var priceEl = document.createElement('button')
+            var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
+            date.push(departCut[0])
             priceEl.setAttribute('id', 'price' + i)
             priceEl.setAttribute('class', 'priceBtns')
-            priceEl.setAttribute('onclick', 'events(' + i + ')')
-            var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
+            priceEl.setAttribute('onclick', 'fetchEvents('+ "'"+city+"'" + "," + " '"+date[i]+"'" + ')')
             priceEl.textContent = 'Option ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
-            date.push(departCut[0])
             ff2El.appendChild(priceEl)
             fetchEvents(city, date[0]);
 

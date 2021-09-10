@@ -7,11 +7,12 @@ var city = []
 var date = []
 
 
-var priceInfoAnytime = function(data){
+var priceInfoAnytime = function(){
     var toEl = document.querySelector('#to').value
     var fromEl = document.querySelector('#from').value
     ff2El.innerHTML = ""
     carrierIDEl.innerHTML = ""
+    
     // Get flight information
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
@@ -29,33 +30,35 @@ var priceInfoAnytime = function(data){
             console.log('error')
         }
             
-        console.log(data)
         testFlightEL = document.createElement('div')
         testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
         ff2El.appendChild(testFlightEL) 
+        city = []
         if (data.Quotes[0].OutboundLeg.DestinationId === data.Places[0].PlaceId) {
             city.push(data.Places[0].CityName)
         }
         else {
             city.push(data.Places[1].CityName)
-        }  
-        console.log(city)     
+        } 
+        
+        date = []
         for (i = 0; i < data.Quotes.length; i++){
 
             // Set up Price
-            console.log(data.Quotes[i].MinPrice)
             var priceEl = document.createElement('button')
             priceEl.setAttribute('id', 'price' + i)
-            priceEl.setAttribute('class', '#')
-            priceEl.setAttribute('onclick', 'eventSearch()')
+            priceEl.setAttribute('class', 'priceBtns')
+            priceEl.setAttribute('onclick', 'events(' + i + ')')
             var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
-            priceEl.textContent = 'Flight ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
+            priceEl.textContent = 'Option ' + (i+1) + '  $' + data.Quotes[i].MinPrice + '   /   Departure Date ' + departCut[0] + '   /   Carriers ID   ' + data.Quotes[i].OutboundLeg.CarrierIds[0]
+            date.push(departCut[0])
             ff2El.appendChild(priceEl)
+            fetchEvents(city, date[0]);
 
-            if (i===0) {
+            if (i === 0) {
             // Show carrier ID's Table
             for (j = 0; j < data.Carriers.length; j++){
-                console.log(data.Carriers[j])
+                // console.log(data.Carriers[j])
 
                 // Set ID Variable
                 var IDEl = document.createElement('div')
@@ -68,7 +71,6 @@ var priceInfoAnytime = function(data){
             } 
             }
         }
-        return data
     })
     .catch(err => {
         console.error(err);
@@ -76,26 +78,38 @@ var priceInfoAnytime = function(data){
 }
 var mySearch = function(){
     var data = priceInfoAnytime(data)
-    // console.log(data)
-    // for (i = 0; i > data.Quotes.length; i++){
-    // console.log(data.Quotes[i].MinPrice)}
 }
-var events = {
-    fetchEvents: function(city) {
+
+
+    
+var fetchEvents = (city, date) => {
         fetch(
-            "https://api.seatgeek.com/2/venues?city="
-            + 
+            "https://api.seatgeek.com/2/events?venue.city="
+            + city
+            + "&datetime_utc.gt="
+            + date
             + "&client_id=MjMxMzI4MDd8MTYzMTA2NzEwMy45NTIzMjE4"
         )
 
         .then((response) => response.json())
-        .then((data) =>
-        console.log(data.venues[0].city));
+        .then((data) => displayEvents(data));
 
-    },
-    displayEvents: function(data) {
-        const { title } = data[0];
-        const { city } = data[0].venue;
-        console.log(title, city)
-    }
-}; 
+    };
+
+var displayEvents = (data) => {
+    const title = data.events[0].title;
+    const time = data.events[0].datetime_local;
+    const city = data.events[0].venue.city;
+    const name = data.events[0].venue.name;
+    var locale = new Date(time);
+    $(".eventTitle").text("Event: " + title);
+    $(".eventTime").text("Date: " + locale.toLocaleDateString('en-US'));
+    $(".cityName").text("Location: " + city);
+    $(".venueName").text("Venue: " + name);
+}
+
+
+
+
+
+

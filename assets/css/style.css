@@ -80,6 +80,17 @@ nav a:hover::before {
     width: 100%;
 }
 
+#FF2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#FF2 button {
+    width: 500px;
+}
+
 footer {
     padding: 30px;
     clear: both;
@@ -93,4 +104,11 @@ footer {
     background-blend-mode: multiply;
     background-position: center;
     text-align: center;
+}
+
+@media screen and (max-width:500px) {
+    header {
+        width: 100%;
+    }
+     
 }

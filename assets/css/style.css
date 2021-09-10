@@ -100,7 +100,7 @@ footer {
 }
 
 .booking-flights {
-    background-image: url(./planee.png);
+    background-image: url(../images/planee.png);
     background-size: cover;
     background-blend-mode: multiply;
     background-position: center;

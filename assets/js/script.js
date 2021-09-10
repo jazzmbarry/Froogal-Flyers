@@ -4,6 +4,7 @@ var ff3El = document.querySelector('#FF3')
 var carrierIDEl = document.querySelector('#carrierIDs')
 var testButton = document.querySelector('#testButton')
 var city = []
+var date = []
 
 
 var priceInfoAnytime = function(data){
@@ -28,7 +29,7 @@ var priceInfoAnytime = function(data){
             console.log('error')
         }
             
-        // console.log(data)
+        console.log(data)
         testFlightEL = document.createElement('div')
         testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
         ff2El.appendChild(testFlightEL) 

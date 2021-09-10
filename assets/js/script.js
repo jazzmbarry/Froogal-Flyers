@@ -98,7 +98,7 @@ var fetchEvents = (city, date) => {
 
 var displayEvents = (data) => {
     const title = data.events[0].title;
-    const time = data.events[0].datetime_local;
+    const time = data.events[0].datetime_utc;
     const city = data.events[0].venue.city;
     const name = data.events[0].venue.name;
     var locale = new Date(time);

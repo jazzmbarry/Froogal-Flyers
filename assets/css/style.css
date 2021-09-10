@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     color: black;
+    list-style: none;
 }
 
 body {
@@ -104,6 +105,11 @@ footer {
     background-blend-mode: multiply;
     background-position: center;
     text-align: center;
+}
+
+ul {
+    text-align: center;
+    
 }
 
 @media screen and (max-width:500px) {

@@ -31,6 +31,7 @@ var priceInfoAnytime = function(){
         }
             
         testFlightEL = document.createElement('div')
+        testFlightEL.setAttribute('class', 'flightAnnouncement')
         testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
         ff2El.appendChild(testFlightEL) 
         city = []
@@ -48,6 +49,7 @@ var priceInfoAnytime = function(){
             var priceEl = document.createElement('button')
             var departCut = (data.Quotes[i].OutboundLeg.DepartureDate).split("T")
             date.push(departCut[0])
+            // $("#carrierIDs").textContent("CARRIER ID KEY")
             priceEl.setAttribute('id', 'price' + i)
             priceEl.setAttribute('class', 'priceBtns')
             priceEl.setAttribute('onclick', 'fetchEvents('+ "'"+city+"'" + "," + " '"+date[i]+"'" + ')')
@@ -68,7 +70,7 @@ var priceInfoAnytime = function(){
                 // carrierEl.setAttribute('button', onclick(eventSearch()))
                 IDEl.textContent = data.Carriers[j].CarrierId + '   =   ' + data.Carriers[j].Name
                 carrierIDEl.appendChild(IDEl) 
-            } 
+                } 
             }
         }
     })
@@ -79,8 +81,6 @@ var priceInfoAnytime = function(){
 var mySearch = function(){
     var data = priceInfoAnytime(data)
 }
-
-
     
 var fetchEvents = (city, date) => {
         fetch(
@@ -92,35 +92,36 @@ var fetchEvents = (city, date) => {
         )
 
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => displayEvents(data));
 
     };
 
 var displayEvents = (data) => {
-    const title = data.events[1].title;
-    const time = data.events[1].datetime_utc;
-    const city = data.events[1].venue.city;
-    const name = data.events[1].venue.name;
+    $(".eventsDisplay").text("INTERESTED IN FINDING LOCAL EVENTS?")
+    const title = data.events[0].title;
+    const time = data.events[0].datetime_utc;
+    const city = data.events[0].venue.city;
+    const name = data.events[0].venue.name;
     var locale = new Date(time);
     $(".eventTitle").text("Event: " + title);
     $(".eventTime").text("Date: " + locale.toLocaleDateString('en-US'));
     $(".cityName").text("Location: " + city);
     $(".venueName").text("Venue: " + name);
 
-    const title2 = data.events[3].title;
-    const time2 = data.events[3].datetime_utc;
-    const city2 = data.events[3].venue.city;
-    const name2 = data.events[3].venue.name;
+    const title2 = data.events[2].title;
+    const time2 = data.events[2].datetime_utc;
+    const city2 = data.events[2].venue.city;
+    const name2 = data.events[2].venue.name;
     var locale2 = new Date(time2);
     $(".eventTitle2").text("Event: " + title2);
     $(".eventTime2").text("Date: " + locale2.toLocaleDateString('en-US'));
     $(".cityName2").text("Location: " + city2);
     $(".venueName2").text("Venue: " + name2);
 
-    const title3 = data.events[5].title;
-    const time3 = data.events[5].datetime_utc;
-    const city3 = data.events[5].venue.city;
-    const name3 = data.events[5].venue.name;
+    const title3 = data.events[3].title;
+    const time3 = data.events[3].datetime_utc;
+    const city3 = data.events[3].venue.city;
+    const name3 = data.events[3].venue.name;
     var locale3 = new Date(time3);
     $(".eventTitle3").text("Event: " + title3);
     $(".eventTime3").text("Date: " + locale3.toLocaleDateString('en-US'));

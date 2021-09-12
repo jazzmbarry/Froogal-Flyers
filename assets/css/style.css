@@ -51,7 +51,6 @@ h1 a {
     margin: auto;
     flex-flow: row wrap;
     box-sizing: border-box;
-    width: 29%;
     text-align: center;
 }
 
@@ -229,9 +228,56 @@ ul {
     
 }
 
+@media screen and (max-width:1024px) {
+    .jumbotron h2 {
+        font-size: 7rem;
+    }
+    
+    .motto h3 {
+        width: 100%;
+    } 
+}
+
+@media screen and (max-width:864px) {
+    header h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 10rem;
+    }
+
+    header nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    header nav ul li {
+        margin: 0;
+        display: flex;
+    }
+
+    .jumbotron h2 {
+        font-size: 5rem;
+    }
+
+}
+
 @media screen and (max-width:500px) {
     header {
         width: 100%;
     }
+
+    header h1 {
+        font-size: 6rem;
+    }
+
+    .jumbotron h2 {
+        font-size: 4rem;
+    }
      
 }
+

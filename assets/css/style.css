@@ -2,7 +2,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    color: black;
     list-style: none;
 }
 
@@ -14,8 +13,96 @@ body {
 
 
 header {
-    background: #1df6fd;
+    background: rgba(33, 52, 84);
     justify-content: space-between;
+}
+h1 a {
+    color: white;
+    font-size: smaller;
+}
+
+.jumbotron {
+    background-image: url("../images/19577124_10155429195391407_513304593199093597_o.jpg");
+    background-size: cover;
+    background-position-x: 15%;
+    background-position-y: 15%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.jumbotron h2 {
+    color: rgba(33, 52, 84);
+    font-size: 10rem;
+    padding: 20rem 0 20rem 0;
+    margin: auto;
+}
+
+.motto {
+    background-color: rgba(33, 52, 84);
+    padding: 2rem;
+    margin: auto;
+}
+
+.motto h3 {
+    color: white;
+    padding: 2.5rem 0 2.5rem 0;
+    margin: auto;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#FF1 {
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 3rem;
+}
+
+#FF1 h4 {
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+
+#FF1 p {
+    font-size: small;
+}
+
+.container #to, #from {
+    margin: .5rem 0 .5rem 0;
+    width: 50%;
+}
+
+.button-black {
+    background-color: rgba(33, 52, 84);
+    border-color: rgba(33, 52, 84);
+  }
+
+.booking-flights {
+    background-color: rgba(33, 52, 84);
+    color: white;
+}
+
+.booking-flights h4 {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.booking-flights h5 {
+    padding: 1rem 0 1rem 0;
+    text-align: left;
+    width: 82%;
+    margin: auto;
+
+}
+
+.booking-flights p {
+    font-size: smaller;
+    width: 80%;
+    margin: auto;
+    padding: .5rem 0 .5rem 0;
+    text-align: left;
 }
 
 header::after {
@@ -54,7 +141,7 @@ nav li {
 }
 
 nav a {
-    color: rgb(53, 52, 52);
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -68,7 +155,7 @@ nav a::before {
     content: '';
     display: block;
     height: 5px;
-    background-color:rgb(53, 52, 52);
+    background-color:rgba(33, 52, 84);
 
     position: absolute;
     top: 0;
@@ -81,30 +168,63 @@ nav a:hover::before {
     width: 100%;
 }
 
+.flightAnnouncement {
+    color: white;
+    padding: 2rem 0 2rem 0;
+}
+
 #FF2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(33, 52, 84);
 }
 
 #FF2 button {
     width: 500px;
+    background-color: white;
+    border-color: white;
+    color: rgba(33, 52, 84);
+}
+
+#FF3 h3 {
+    text-align: center;
+}
+
+#FF3 h4 {
+    padding-top: 2rem;
+    color: rgba(33, 52, 84);
+    font-size: large;
+}
+
+h4 {
+    text-align: center;
+}
+
+ul {
+    border-bottom: 1px solid rgb(79, 96, 126);
+}
+
+#references {
+    color: white;
+    background-color: rgba(33, 52, 84);
+}
+
+p .faqs {
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
 
 footer {
     padding: 30px;
-    clear: both;
-    text-align: center;
-    background: #1df6fd;
+    text-align: left;
+    background: rgba(33, 52, 84);
+    font-size: smaller;
 }
 
-.booking-flights {
-    background-image: url(../images/planee.png);
-    background-size: cover;
-    background-blend-mode: multiply;
-    background-position: center;
-    text-align: center;
+footer h7, a {
+    color: white;
 }
 
 ul {
@@ -112,9 +232,60 @@ ul {
     
 }
 
+@media screen and (max-width:1024px) {
+    .jumbotron h2 {
+        font-size: 7rem;
+    }
+    
+    .motto h3 {
+        width: 100%;
+    } 
+}
+
+@media screen and (max-width:864px) {
+    header h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 10rem;
+    }
+
+    header nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    header nav ul li {
+        margin: 0;
+        display: flex;
+    }
+
+    .jumbotron h2 {
+        font-size: 5rem;
+    }
+
+}
+
 @media screen and (max-width:500px) {
     header {
         width: 100%;
     }
+
+    header h1 {
+        font-size: 6rem;
+    }
+
+    .jumbotron h2 {
+        font-size: 4rem;
+    }
+
+    .booking-flights {
+        width: 100%;
+    }
      
 }
+

@@ -16,7 +16,7 @@
     <header>
         <div class="container">
             <h1>
-            <a href="#FF" id="FF">Froogal Flyers</a>
+            <a href="#FF" id="FF" target="">Froogal Flyers</a>
             </h1>
             <nav>
                 <ul>
@@ -30,24 +30,35 @@
                         <a href="#FF3">Carrier IDs</a>
                     </li>
                     <li>
-                        <a href="#FF4">Tips On Booking Flights</a>
+                        <a href="#FF4">Flight Tips</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <section class="jumbotron">
+        <h2>FROOGAL FLYERS</h2>    
+    </section>
+    
+    <section class="motto">
+        <h3>SPEND YOUR MONEY WHERE IT REALLY COUNTS</h3>
+    </section>
+
     <section class="" id="FF1">
-        <h2>
-            Search for a flight by airport abbreviation
-        </h2>
-        <div class="container">
+        <h4>
+            WHAT ARE YOUR TRAVEL PLANS?
+        </h4>
+        <br>
+        <p>*PLEASE USE CITY NAMES TO SEARCH</p>
+        <div class="container" id="containerFrom">
         <input type="text" id="from" placeholder="From" />
         </div>
-        <div class="container">
+        <div class="container" id="containerTo">
         <input type="text" id="to" placeholder="To">
+        </div>
         <div class="search"></div>
-        <button id="searchButton" onclick="mySearch()">Search</button>
+        <button class="button-black" id="searchButton" onclick="mySearch()">Search</button>
     </section>
 
     <section class ="" id="FF2"> 
@@ -55,25 +66,40 @@
     </section>
 
     <section class="" id="FF3">
-        <h2 id='carrierIDs'></h2>
+        <!-- <h3>CARRIER IDs KEY</h3> -->
+        <h4 id='carrierIDs'></h4>
         <br>
-        <h2>Upcoming Events</h2>
+        <h4 class="eventsDisplay"></h4>
             <ul>
                 <li class="eventTitle"></li>
                 <li class="eventTime"></li>
                 <li class="cityName"></li>
                 <li class="venueName"></li>
             </ul>
+
+            <ul>
+                <li class="eventTitle2"></li>
+                <li class="eventTime2"></li>
+                <li class="cityName2"></li>
+                <li class="venueName2"></li>
+            </ul>
+
+            <ul>
+                <li class="eventTitle3"></li>
+                <li class="eventTime3"></li>
+                <li class="cityName3"></li>
+                <li class="venueName3"></li>
+            </ul>
     </section>
 
     <section class ="booking-flights" id="FF4">
         
 
-        <h2>Tips on booking flights</h2>
+        <h4>NEED SOME TIPS ON HOW TO FIND THE BEST FLIGHTS?</h4>
         
         <ul>
             <li>
-                <h3>Which day of the week is the best day to buy airline tickets?</h3>
+                <h5>Which day of the week is the best day to buy airline tickets?</h5>
                     <p>
                         For both U.S. domestic and international travel, Sundays can be cheaper* for plane ticket purchases. 
                         For domestic flights, Mondays showed the highest average ticket prices and for international, avoid booking on Fridays.
@@ -81,7 +107,7 @@
                     </p>
             </li>       
             <li>
-                <h3>How far ahead should I buy airline tickets?</h3>
+                <h5>How far ahead should I buy airline tickets?</h5>
                     <p>
                         Based on 2019 global flight data, 21 days prior to departure* is the sweet spot for booking flights.
                         But this isn't a hard-and-fast rule; keeping an eye on prices is a good idea when trying to find the best deal.
@@ -89,7 +115,7 @@
                     </p>
             </li>
             <li>
-                <h3>Which are the cheapest days to fly?</h3>
+                <h5>Which are the cheapest days to fly?</h5>
                 <p>
                     Analysis of domestic and international airfare prices showed that flying out on Sundays can be cheaper*.
                     Many travelers start their trips on Friday or Saturdays, so your chances of lower prices are better when departing
@@ -98,7 +124,7 @@
                 </p>
             </li>
             <li>
-                <h3>Which is the cheapest month to fly?</h3>
+                <h5>Which is the cheapest month to fly?</h5>
                 <p>
                     The cheapest month to fly can vary depending on where you're going, so finding the best rates largely
                     comes down to avoiding peak travel times for you destination. A great insider tip is to travel during shoulder
@@ -108,30 +134,38 @@
                 </p>
             </li>
             <li>
-                <h3>How can I save money on flights?</h3>
+                <h5>How can I save money on flights?</h5>
                 <p>
                     Mixing and matching airlines and fare types could help save money on airfare to your destination.
                     Easily compare prices on carriers, arrival and departure dates, airplane cabin class, and more when you book with Froogle
                     Flyers. Booking your plane ticket on a Sunday, and departing on a Thursday or Friday, could save you money!
                 </p>
             </li>
-            <li>
-                <h6>*Referrences*</h6>
-                <p><a href="https://www2.arccorp.com/articles-trends/sales-statistics/">https://www2.arccorp.com</a></p>
-                <p><a href="https://www.expedia.com/Flights?langid=1033&semcid=US.MULTILOBF.GOOGLE.GT-c-EN.FLIGHT&semdtl=a1355852835.b125535175395.r1cf9e6fbc9c731b62b2302250450ca10fc959a9976c293242990bf4ee28363927.g1kwd-20847100.i1.d1280328929868.e1c.j19029746.k1.f1.n1.l1g.h1e.m1&gclid=Cj0KCQjw7MGJBhD-ARIsAMZ0eetGdOHma8hgNSMSz-FtPwOKixyc2TiVNHOFQ_3lGH12RRwC-XChSIkaAg0EEALw_wcB">https://www.expedia.com</a></p>
+            <li id="references">
+                <h4>References</h4>
+                <a href="https://www2.arccorp.com/articles-trends/sales-statistics/">Arc Corp</a>
+                <a href="https://www.expedia.com/Flights?langid=1033&semcid=US.MULTILOBF.GOOGLE.GT-c-EN.FLIGHT&semdtl=a1355852835.b125535175395.r1cf9e6fbc9c731b62b2302250450ca10fc959a9976c293242990bf4ee28363927.g1kwd-20847100.i1.d1280328929868.e1c.j19029746.k1.f1.n1.l1g.h1e.m1&gclid=Cj0KCQjw7MGJBhD-ARIsAMZ0eetGdOHma8hgNSMSz-FtPwOKixyc2TiVNHOFQ_3lGH12RRwC-XChSIkaAg0EEALw_wcB">Expedia</a>
             </li>
         </ul>
 
     </section>
 
     <footer>
-        <h2>Made By Calvin, Matt, Gabriel, Brandon, and Logan.</h2>
-        <div>
-            <!--Privacy Policy -->
-        </div>
+
+        <h7>CREATED 2021 BY
+            <a href="https://calvinjdonner.github.io/" target="blank"> CALVIN DONNER,</a>
+            <a href="https://jazzmbarry.github.io/portfolio/" target="blank"> MATT BARRY,</a>
+            <a href="" target="blank"> GABRIEL GARCIA,</a>
+            <a href="" target="blank"> BRANDON FRANKS,</a>
+            <!-- how to remove formatting for the & symbol -->
+            <a href="" target=""> & </a> 
+            <a href="" target="blank"> LOGAN BOYD</a>
+        </h7>
+
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/airport-autocomplete-js@latest/dist/index.browser.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

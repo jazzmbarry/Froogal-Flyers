@@ -10,11 +10,14 @@ var date = []
 var priceInfoAnytime = function(){
     var toEl = document.querySelector('#to').value
     var fromEl = document.querySelector('#from').value
+    var to = toEl.split(' ')
+    var from = fromEl.split(' ')
+    
     ff2El.innerHTML = ""
     carrierIDEl.innerHTML = ""
     
     // Get flight information
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + fromEl + "-sky/" + toEl + "-sky/anytime?inboundpartialdate=anytime", {
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + from[0] + "-sky/" + to[0] + "-sky/anytime?inboundpartialdate=anytime", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -32,7 +35,7 @@ var priceInfoAnytime = function(){
             
         testFlightEL = document.createElement('div')
         testFlightEL.setAttribute('class', 'flightAnnouncement')
-        testFlightEL.textContent = "This Flight is going from " + fromEl + " to " + toEl
+        testFlightEL.textContent = "This Flight is going from " + from[0] + " to " + to[0]
         ff2El.appendChild(testFlightEL) 
         city = []
         if (data.Quotes[0].OutboundLeg.DestinationId === data.Places[0].PlaceId) {
@@ -129,7 +132,22 @@ var displayEvents = (data) => {
     $(".venueName3").text("Venue: " + name3);
 }
 
+const options = {
+    fuse_options : {
+        shouldSort: true,
+        threshold: 0.4,
+        maxPatternLength: 3,
+        keys: [{
+            name: "IATA",
+            weight: 0.6
+          }
 
+        ]
+      }
+  };
+
+AirportInput('to')
+AirportInput('from')
 
 
 

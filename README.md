@@ -118,6 +118,7 @@ There are no major disparities in the number of GitHub contributions between gro
 
 ## APIs used
 * SkyScanner - Used for flight pricing
+* SeatGeak - Used for Events
 
 ## Website Link
 https://jazzmbarry.github.io/project-1/

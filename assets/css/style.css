@@ -188,10 +188,14 @@ nav a:hover::before {
     color: rgba(33, 52, 84);
 }
 
+#FF3 h3 {
+    text-align: center;
+}
+
 #FF3 h4 {
     padding-top: 2rem;
     color: rgba(33, 52, 84);
-
+    font-size: large;
 }
 
 h4 {
@@ -277,6 +281,10 @@ ul {
 
     .jumbotron h2 {
         font-size: 4rem;
+    }
+
+    .booking-flights {
+        width: 100%;
     }
      
 }

@@ -2,7 +2,6 @@ var ff1El = document.querySelector('#FF1')
 var ff2El = document.querySelector('#FF2')
 var ff3El = document.querySelector('#FF3')
 var carrierIDEl = document.querySelector('#carrierIDs')
-var testButton = document.querySelector('#testButton')
 var city = []
 var date = []
 
@@ -45,6 +44,10 @@ var priceInfoAnytime = function(){
             city.push(data.Places[1].CityName)
         } 
         
+        var carrierIdTagEl = document.createElement('h3')
+        carrierIdTagEl.textContent = "CARRIER IDs KEY"
+        carrierIDEl.appendChild(carrierIdTagEl)
+
         date = []
         for (i = 0; i < 5; i++){
 
@@ -63,6 +66,7 @@ var priceInfoAnytime = function(){
             if (i === 0) {
             // Show carrier ID's Table
             for (j = 0; j < data.Carriers.length; j++){
+
                 // console.log(data.Carriers[j])
 
                 // Set ID Variable
